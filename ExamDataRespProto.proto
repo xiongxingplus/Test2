@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam";
+option java_outer_classname = "ExamDataRespProto";
+
+//增加考试数据的响应
+//commandId = 0x0061
+message InsertExamDataResp{
+
+}
+
+//根据考试数据id删除考试数据的响应
+//commandId = 0x0062
+message DeleteExamDataResp{
+
+}
+
+//修改考试数据的响应
+//commandId = 0x0063
+message UpdateExamDataResp{
+
+}
+
+//根据考试数据id查询考试数据的响应
+//commandId = 0x0064
+message GetExamDataByIdResp{
+    ExamDataProto examData                      = 1;//考试数据
+}
+
+//获取考试数据总数的响应
+//commandId = 0x0065
+message CountExamDataResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询考试数据的响应
+//commandId = 0x0066
+message PageExamDataResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated ExamDataProto examDatas            = 5;//题目列表
+}
+
+//分页查询考试数据的响应
+//commandId = 0x0067
+message PageExamDataByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated ExamDataProto examDatas            = 5;//题目列表
+}
+
+//批量删除考试数据的响应
+//commandId = 0x0068
+message BatchDeleteExamDataResp{
+    string detail                               = 1;//详情
+}
+
+//根据考试ID和用户ID考试数据的响应
+//commandId = 0x0069
+message GetExamDataByUEResp{
+    ExamDataProto examData                      = 1;//考试数据
+}
+
+//根据考试ID和用户ID判断 能否开始考试的的响应
+//commandId = 0x006A
+message StartExamResp{
+    bool can                                    = 1;//能否
+    string detail                               = 2;//详情
+}
+
+// 考试数据
+message ExamDataProto
+{
+    string id                                   = 1;//考试数据id
+    string examId                               = 2;//考试id
+    string userId                               = 3;//用户id
+    int64 startTime                             = 4;//开考时间
+    int64 endTime                               = 5;//结束时间
+    string ip                                   = 6;//ip
+    int32 score                                 = 7;//得分
+    int32 status                                = 8;//状态
+    string data                                 = 9;//考试数据记录
+    string check                                = 10;//考试数据评卷记录
+    string remark                               = 11;//考试数据说明
+    int32 totalScore                            = 12;//总分
+    int32 passScore                             = 13;//及格分数
+    string examName                             = 14;//考试名称
+    string userName                             = 15;//用户名
+    string realName                             = 16;//姓名
+    string paperId                              = 17;//试卷Id
+}

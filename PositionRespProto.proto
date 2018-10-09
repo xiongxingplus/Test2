@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.user";
+option java_outer_classname = "PositionRespProto";
+
+//增加班级的响应
+//commandId = 0x0081
+message InsertPositionResp{
+    bool success                                = 1;//是否成功
+    string detail                               = 2;//详情
+}
+
+//根据班级id删除班级的响应
+//commandId = 0x0082
+message DeletePositionResp{
+
+}
+
+//修改班级的响应
+//commandId = 0x0083
+message UpdatePositionResp{
+
+}
+
+//根据班级id查询班级的响应
+//commandId = 0x0084
+message GetPositionByIdResp{
+    PositionProto position                      = 1;//班级
+}
+
+//获取班级总数的响应
+//commandId = 0x0085
+message CountPositionResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询班级的响应
+//commandId = 0x0086
+message PagePositionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated PositionProto positions            = 5;//题目列表
+}
+
+//获取所有班级的响应
+//commandId = 0x0087
+message GetAllPositionsResp{
+    repeated PositionProto positions            = 1;//班级列表
+}
+
+//根据条件分页查询班级的响应
+//commandId = 0x0088
+message PagePositionByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated PositionProto positions            = 5;//班级列表
+}
+
+//班级
+message PositionProto{
+    string id                                   = 1;//班级id
+    string name                                 = 2;//班级名称
+    int32 status                                = 3;//班级状态 0:禁用 1:启用
+    string poster                               = 4;//创建人
+    int64 createDate                            = 5;//创建日期
+    string modifier                             = 6;//修改人
+    int64 modifyDate                            = 7;//修改日期
+    string remark                               = 8;//班级说明
+    int32 amount                                = 9;//试卷数量
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam_base";
+option java_outer_classname = "ExamBaseRespProto";
+
+//考试系统基本信息的请求
+//commandId = 0x00B1
+message GetExamBaseInfoResp{
+    int32 quesNumber                            = 1;//试题数量
+    string quesDesc                             = 2;//试题描述
+    int32 userNumber                            = 3;//用户数量
+    string userDesc                             = 4;//用户描述
+    int32 paperNumber                           = 5;//试卷数量
+    string paperDesc                            = 6;//试卷描述
+    int32 examNumber                            = 7;//考试数量
+    string examDesc                             = 8;//考试描述
+}
+

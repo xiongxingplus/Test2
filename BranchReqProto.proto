@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.user";
+option java_outer_classname = "BranchReqProto";
+
+//增加专业的请求
+//commandId = 0x0071
+message InsertBranchReq{
+    string name                                 = 1;//专业名称
+    int32 status                                = 2;//专业状态 0:禁用 1:启用
+    string poster                               = 3;//创建人
+    string remark                               = 4;//专业说明
+}
+
+//根据专业id删除专业的请求
+//commandId = 0x0072
+message DeleteBranchReq{
+    string id                                   = 1;//专业id
+}
+
+//修改专业的请求
+//commandId = 0x0073
+message UpdateBranchReq{
+    string id                                   = 1;//专业id
+    string name                                 = 2;//专业名称
+    int32 status                                = 3;//专业状态 0:禁用 1:启用
+    string modifier                             = 4;//修改人
+    string remark                               = 5;//专业说明
+}
+
+//根据专业id查询专业的请求
+//commandId = 0x0074
+message GetBranchByIdReq{
+    string id                                   = 1;//专业id
+}
+
+//获取专业总数的请求
+//commandId = 0x0075
+message CountBranchReq{
+
+}
+
+//分页查询专业的请求
+//commandId = 0x0076
+message PageBranchReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+}
+
+//获取所有专业的请求
+//commandId = 0x0077
+message GetAllBranchsReq{
+
+}
+
+//根据条件分页查询专业的请求
+//commandId = 0x00078
+message PageBranchByConditionReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    map<string, string> conditions              = 3;//查询条件
+}

@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.user";
+option java_outer_classname = "PositionReqProto";
+
+//增加班级的请求
+//commandId = 0x0081
+message InsertPositionReq{
+    string name                                 = 1;//班级名称
+    int32 status                                = 2;//班级状态 0:禁用 1:启用
+    string poster                               = 3;//创建人
+    string remark                               = 4;//班级说明
+}
+
+//根据班级id删除班级的请求
+//commandId = 0x0082
+message DeletePositionReq{
+    string id                                   = 1;//班级id
+}
+
+//修改班级的请求
+//commandId = 0x0083
+message UpdatePositionReq{
+    string id                                   = 1;//班级id
+    string name                                 = 2;//班级名称
+    int32 status                                = 3;//班级状态 0:禁用 1:启用
+    string modifier                             = 4;//修改人
+    string remark                               = 5;//班级说明
+}
+
+//根据班级id查询班级的请求
+//commandId = 0x0084
+message GetPositionByIdReq{
+    string id                                   = 1;//班级id
+}
+
+//获取班级总数的请求
+//commandId = 0x0085
+message CountPositionReq{
+
+}
+
+//分页查询班级的请求
+//commandId = 0x0086
+message PagePositionReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+}
+
+//获取所有班级的请求
+//commandId = 0x0087
+message GetAllPositionsReq{
+
+}
+
+//根据条件分页查询班级的请求
+//commandId = 0x00088
+message PagePositionByConditionReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    map<string, string> conditions              = 3;//查询条件
+}

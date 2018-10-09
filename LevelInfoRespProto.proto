@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam";
+option java_outer_classname = "LevelInfoRespProto";
+
+//增加关卡的响应
+//commandId = 0x00C1
+message InsertLevelInfoResp{
+
+}
+
+//根据关卡id删除关卡的响应
+//commandId = 0x00C2
+message DeleteLevelInfoResp{
+
+}
+
+//修改关卡的响应
+//commandId = 0x00C3
+message UpdateLevelInfoResp{
+
+}
+
+//根据关卡id查询关卡的响应
+//commandId = 0x00C4
+message GetLevelInfoByIdResp{
+    LevelInfoProto LevelInfo                      = 1;//关卡
+}
+
+//根据用户id查询关卡的响应
+//commandId = 0x00C5
+message GetLevelInfoByUIDResp{
+    LevelInfoProto LevelInfo                      = 1;//关卡
+}
+
+//根据用户id判断是否存在关卡信息的响应
+//commandId = 0x00C6
+message IsExistsLevelInfoResp{
+    bool isExists                                = 1;//是否存在
+    string detail                                = 2;//详情
+}
+
+message LevelInfoProto{
+    string id                                    = 1;//关卡id
+    string userId                                = 2;//用户id
+    int32 level                                  = 3;//当前关卡
+    string data                                  = 4;//关卡数据
+    string remark                                = 5;//关卡备注
+}

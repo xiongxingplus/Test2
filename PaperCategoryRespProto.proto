@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.paper";
+option java_outer_classname = "PaperCategoryRespProto";
+
+//增加试卷分类的响应
+//commandId = 0x0031
+message InsertPaperCategoryResp{
+    bool success                                = 1;//是否成功
+    string detail                               = 2;//详情
+}
+
+//根据试卷分类id删除试卷分类的响应
+//commandId = 0x0032
+message DeletePaperCategoryResp{
+
+}
+
+//修改试卷分类的响应
+//commandId = 0x0033
+message UpdatePaperCategoryResp{
+
+}
+
+//根据试卷分类id查询试卷分类的响应
+//commandId = 0x0034
+message GetPaperCategoryByIdResp{
+    PaperCategoryProto paperCategory            = 1;//试卷分类
+}
+
+//获取试卷分类总数的响应
+//commandId = 0x0035
+message CountPaperCategoryResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询试卷分类的响应
+//commandId = 0x0036
+message PagePaperCategoryResp{
+    int32 currentPage = 1;//当前页码
+    int32 pageSize = 2;//每页数量
+    int32 totalRecords = 3;//总记录
+    int32 totalPages = 4;//总页数
+    repeated PaperCategoryProto paperCategorys  = 5;//题目列表
+}
+
+//获取所有试卷分类的响应
+//commandId = 0x0037
+message GetAllPaperCategorysResp{
+    repeated PaperCategoryProto paperCategorys    = 1;//试卷分类列表
+}
+
+//根据条件分页查询试卷分类的响应
+//commandId = 0x0038
+message PagePaperCategoryByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated PaperCategoryProto paperCategorys  = 5;//试卷分类列表
+}
+
+//试卷分类
+message PaperCategoryProto{
+    string id                                   = 1;//试卷分类id
+    string name                                 = 2;//试卷分类名称
+    int32 status                                = 3;//试卷分类状态 0:禁用 1:启用
+    string poster                               = 4;//创建人
+    int64 createDate                            = 5;//创建日期
+    string modifier                             = 6;//修改人
+    int64 modifyDate                            = 7;//修改日期
+    string remark                               = 8;//试卷分类说明
+    int32 amount                                = 9;//试卷数量
+}

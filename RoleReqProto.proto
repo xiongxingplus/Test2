@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.user";
+option java_outer_classname = "RoleReqProto";
+
+//增加用户角色的请求
+//commandId = 0x00A1
+message InsertRoleReq{
+    string name                                 = 1;//用户角色名称
+    int32 status                                = 2;//用户角色状态 0:禁用 1:启用
+    string privilege                            = 3;//权限
+    string poster                               = 4;//创建人
+    string remark                               = 5;//用户角色说明
+}
+
+//根据用户角色id删除用户角色的请求
+//commandId = 0x00A2
+message DeleteRoleReq{
+    string id                                   = 1;//用户角色id
+}
+
+//修改用户角色的请求
+//commandId = 0x00A3
+message UpdateRoleReq{
+    string id                                   = 1;//用户角色id
+    string name                                 = 2;//用户角色名称
+    int32 status                                = 3;//用户角色状态 0:禁用 1:启用
+    string privilege                            = 4;//权限
+    string modifier                             = 5;//修改人
+    string remark                               = 6;//用户角色说明
+}
+
+//根据用户角色id查询用户角色的请求
+//commandId = 0x00A4
+message GetRoleByIdReq{
+    string id                                   = 1;//用户角色id
+}
+
+//获取用户角色总数的请求
+//commandId = 0x00A5
+message CountRoleReq{
+
+}
+
+//分页查询用户角色的请求
+//commandId = 0x00A6
+message PageRoleReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+}
+
+//获取所有用户角色的请求
+//commandId = 0x00A7
+message GetAllRolesReq{
+
+}
+
+//根据条件分页查询用户角色的请求
+//commandId = 0x00A8
+message PageRoleByConditionReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    map<string, string> conditions              = 3;//查询条件
+}
+
+//批量删除用户角色的请求
+//commandId = 0x00A9
+message BatchDeleteRoleReq{
+    repeated string list                        =1;//序号列表
+}

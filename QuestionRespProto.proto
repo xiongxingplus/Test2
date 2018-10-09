@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.question";
+option java_outer_classname = "QuestionRespProto";
+
+//增加试题的响应
+//commandId = 0x0001
+message InsertQuestionResp{
+
+}
+
+//根据试题id删除试题的响应
+//commandId = 0x0002
+message DeleteQuestionResp{
+
+}
+
+//修改试题的响应
+//commandId = 0x0003
+message UpdateQuestionResp{
+
+}
+
+//根据试题id查询试题的响应
+//commandId = 0x0004
+message GetQuestionByIdResp{
+    QuestionProto question                      = 1;//试题
+}
+
+//获取试题总数的响应
+//commandId = 0x0005
+message CountQuestionResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询试题的响应
+//commandId = 0x0006
+message PageQuestionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated QuestionProto questions            = 5;//题目列表
+}
+
+//根据条件分页查询试题的响应
+//commandId = 0x0007
+message PageQuestionByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated QuestionProto questions            = 5;//题目列表
+}
+
+//批量删除试题的响应
+//commandId = 0x0008
+message BatchDeleteQuestionResp{
+    string detail                               = 1;//详情
+}
+
+//批量添加试题的响应
+//commandId = 0x0009
+message BatchInsertQuestionResp{
+    string detail                               = 1;//详情
+}
+
+// 题目信息
+message QuestionProto
+{
+    string id                                   = 1;//试题id
+    string bankId                               = 2;//题库id
+    int32 type                                  = 3;//试题类型
+    int32 level                                 = 4;//试题难度
+    string from                                 = 5;//试题来源
+    int32 status                                = 6;//试题状态
+    string content                              = 7;//试题内容
+    string key                                  = 8;//试题答案
+    string resolve                              = 9;//试题解析
+    string poster                               = 10;//创建人
+    int64 createDate                            = 11;//创建日期
+    string modifier                             = 12;//修改人
+    int64 modifyDate                            = 13;//修改日期
+    string data                                 = 14;//题目数据
+}

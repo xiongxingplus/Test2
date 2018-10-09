@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam";
+option java_outer_classname = "ExamReqProto";
+
+//增加考试的请求
+//commandId = 0x0041
+message InsertExamReq{
+    string name                                 = 1;//考试名称
+    string paperId                              = 2;//试卷id
+    string categoryId                           = 3;//考试分类id
+    int32 status                                = 4;//考试状态
+    int32 duration                              = 6;//考试时长
+    int64 startTime                             = 7;//开考时间
+    int64 endTime                               = 8;//结束时间
+    int64 showTime                              = 9;//成绩公布时间
+    string poster                               = 10;//创建人
+    int32 questionOrder                         = 11;//试题排列顺序
+    int32 showKey                               = 12;//是否公布答案
+    int32 showMode                              = 13;//显示形式
+    string remark                               = 14;//考试说明
+}
+
+//根据考试id删除考试的请求
+//commandId = 0x0042
+message DeleteExamReq{
+    string id                                   = 1;//考试id
+}
+
+//修改考试的请求
+//commandId = 0x0043
+message UpdateExamReq{
+    string id                                   = 1;//考试id
+    string name                                 = 2;//考试名称
+    string paperId                              = 3;//试卷id
+    string categoryId                           = 4;//考试分类id
+    int32 status                                = 5;//考试状态
+    int32 duration                              = 6;//考试时长
+    int64 startTime                             = 7;//开考时间
+    int64 endTime                               = 8;//结束时间
+    int64 showTime                              = 9;//成绩公布时间
+    string modifier                             = 10;//修改人
+    int32 questionOrder                         = 11;//试题排列顺序
+    int32 showKey                               = 12;//是否公布答案
+    int32 showMode                              = 13;//显示形式
+    string remark                               = 14;//考试说明
+}
+
+//根据考试id查询考试的请求
+//commandId = 0x0044
+message GetExamByIdReq{
+    string id                                   = 1;//考试id
+}
+
+//获取考试总数的请求
+//commandId = 0x0045
+message CountExamReq{
+
+}
+
+//分页查询考试的请求
+//commandId = 0x0046
+message PageExamReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+}
+
+//根据条件分页查询考试的请求
+//commandId = 0x0047
+message PageExamByConditionReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    map<string, string> conditions              = 3;//查询条件
+}
+
+//批量删除考试的请求
+//commandId = 0x0048
+message BatchDeleteExamReq{
+    repeated string list                        =1;//序号列表
+}
+
+//获取考试试卷的请求
+//commandId = 0x0049
+message GetExamPaperReq{
+    string paperId                              =1;//考试试卷Id
+}
+
+//最近考试的请求
+//commandId = 0x004A
+message GetLatelyExamReq{
+    int32 number                                = 1;//最近多少数量考试
+}

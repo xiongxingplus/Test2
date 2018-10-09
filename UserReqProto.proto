@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.user";
+option java_outer_classname = "UserReqProto";
+
+//增加用户的请求
+//commandId = 0x0091
+message InsertUserReq{
+    string userName                             = 1;//用户名称
+    string userPassword                         = 2;//用户密码
+    int32 sex                                   = 3;//性别
+    string branchId                             = 4;//专业Id
+    string grade                                = 5;//年级
+    string positionId                           = 6;//班级Id
+    string roleId                               = 7;//角色Id
+    string realName                             = 8;//真实姓名
+    int32 userStatus                            = 9;//用户状态
+    string poster                               = 10;//创建人
+    string remark                               = 11;//说明
+}
+
+//根据用户id删除用户的请求
+//commandId = 0x0092
+message DeleteUserReq{
+    string userId                               = 1;//用户id
+}
+
+//修改用户的请求
+//commandId = 0x0093
+message UpdateUserReq{
+    string userId                               = 1;//用户id
+    string userName                             = 2;//用户名称
+    string userPassword                         = 3;//用户密码
+    int32 sex                                   = 4;//性别
+    string branchId                             = 5;//专业Id
+    string grade                                = 6;//年级
+    string positionId                           = 7;//班级Id
+    string roleId                               = 8;//角色Id
+    string realName                             = 9;//真实姓名
+    int32 userStatus                            = 10;//用户状态
+    string modifier                             = 11;//修改人
+    string remark                               = 12;//说明
+}
+
+//根据用户id查询用户的请求
+//commandId = 0x0094
+message GetUserByIdReq{
+    string userId                               = 1;//用户id
+}
+
+//获取用户总数的请求
+//commandId = 0x0095
+message CountUserReq{
+
+}
+
+//分页查询用户的请求
+//commandId = 0x0096
+message PageUserReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+}
+
+//根据条件分页查询用户的请求
+//commandId = 0x0097
+message PageUserByConditionReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    map<string, string> conditions              = 3;//查询条件
+}
+
+//批量删除用户的请求
+//commandId = 0x0098
+message BatchDeleteUserReq{
+    repeated string list                        =1;//序号列表
+}
+
+//批量添加用户的请求
+//commandId = 0x0099
+message BatchInsertUserReq{
+    repeated InsertUserReq InsertUsers          = 1;//插入的用户列表
+}
+
+//用户登陆的请求
+//commandId = 0x009A
+message UserLoginReq{
+    string userName                             = 1;//用户名
+    string password                             = 2;//用户密码
+	string tag									= 3;//标签
+}
+
+//根据用户名查询用户的请求
+//commandId = 0x009B
+message GetUserByNameReq{
+    string userName                             = 1;//用户名
+}
+
+//根据系统用户状态的请求
+//commandId = 0x009C
+message GetSysUserStatusReq{
+	
+}
+
+//根据用户注销的请求
+//commandId = 0x009D
+message UserExitReq{
+
+}

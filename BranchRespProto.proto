@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.user";
+option java_outer_classname = "BranchRespProto";
+
+//增加专业的响应
+//commandId = 0x0071
+message InsertBranchResp{
+    bool success                                = 1;//是否成功
+    string detail                               = 2;//详情
+}
+
+//根据专业id删除专业的响应
+//commandId = 0x0072
+message DeleteBranchResp{
+
+}
+
+//修改专业的响应
+//commandId = 0x0073
+message UpdateBranchResp{
+
+}
+
+//根据专业id查询专业的响应
+//commandId = 0x0074
+message GetBranchByIdResp{
+    BranchProto branch                          = 1;//专业
+}
+
+//获取专业总数的响应
+//commandId = 0x0075
+message CountBranchResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询专业的响应
+//commandId = 0x0076
+message PageBranchResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated BranchProto branchs                = 5;//题目列表
+}
+
+//获取所有专业的响应
+//commandId = 0x0077
+message GetAllBranchsResp{
+    repeated BranchProto branchs                = 1;//专业列表
+}
+
+//根据条件分页查询专业的响应
+//commandId = 0x0078
+message PageBranchByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated BranchProto branchs  = 5;//专业列表
+}
+
+//专业
+message BranchProto{
+    string id                                   = 1;//专业id
+    string name                                 = 2;//专业名称
+    int32 status                                = 3;//专业状态 0:禁用 1:启用
+    string poster                               = 4;//创建人
+    int64 createDate                            = 5;//创建日期
+    string modifier                             = 6;//修改人
+    int64 modifyDate                            = 7;//修改日期
+    string remark                               = 8;//专业说明
+    int32 amount                                = 9;//试卷数量
+}

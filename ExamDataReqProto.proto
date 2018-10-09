@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam";
+option java_outer_classname = "ExamDataReqProto";
+
+//增加考试数据的请求
+//commandId = 0x0061
+message InsertExamDataReq{
+    string examId                               = 1;//考试id
+    string userId                               = 2;//用户id
+    int64 startTime                             = 3;//开考时间
+    int64 endTime                               = 4;//结束时间
+    string ip                                   = 5;//ip
+    int32 score                                 = 6;//得分
+    int32 status                                = 7;//状态
+    string data                                 = 8;//考试数据记录
+    string check                                = 9;//考试数据评卷记录
+    string remark                               = 10;//考试数据说明
+}
+
+//根据考试数据id删除考试数据的请求
+//commandId = 0x0062
+message DeleteExamDataReq{
+    string id                                   = 1;//考试数据id
+}
+
+//修改考试数据的请求
+//commandId = 0x0063
+message UpdateExamDataReq{
+    string id                                   = 1;//考试数据id
+    string examId                               = 2;//考试id
+    string userId                               = 3;//用户id
+    int64 startTime                             = 4;//开考时间
+    int64 endTime                               = 5;//结束时间
+    string ip                                   = 6;//ip
+    int32 score                                 = 7;//得分
+    int32 status                                = 8;//状态
+    string data                                 = 9;//考试数据记录
+    string check                                = 10;//考试数据评卷记录
+    string remark                               = 11;//考试数据说明
+}
+
+//根据考试数据id查询考试数据的请求
+//commandId = 0x0064
+message GetExamDataByIdReq{
+    string id                                   = 1;//考试数据id
+}
+
+//获取考试数据总数的请求
+//commandId = 0x0065
+message CountExamDataReq{
+
+}
+
+//分页查询考试数据的请求
+//commandId = 0x0066
+message PageExamDataReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+}
+
+//根据条件分页查询考试数据的请求
+//commandId = 0x0067
+message PageExamDataByConditionReq{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    map<string, string> conditions              = 3;//查询条件
+}
+
+//批量删除考试数据的请求
+//commandId = 0x0068
+message BatchDeleteExamDataReq{
+    repeated string list                        =1;//序号列表
+}
+
+//根据考试ID和用户ID考试数据的请求
+//commandId = 0x0069
+message GetExamDataByUEReq{
+    string examId                               = 1;//考试id
+    string userId                               = 2;//用户id
+}
+
+//根据考试ID和用户ID 开始的请求
+//commandId = 0x006A
+message StartExamReq{
+    string examId                               = 1;//考试id
+    string userId                               = 2;//用户id
+}

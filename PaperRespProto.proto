@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.paper";
+option java_outer_classname = "PaperRespProto";
+
+//增加试卷的响应
+//commandId = 0x0021
+message InsertPaperResp{
+    bool success                                = 1;//是否成功
+    string detail                               = 2;//详情
+}
+
+//根据试卷id删除试卷的响应
+//commandId = 0x0022
+message DeletePaperResp{
+
+}
+
+//修改试卷的响应
+//commandId = 0x0023
+message UpdatePaperResp{
+
+}
+
+//根据试卷id查询试卷的响应
+//commandId = 0x0024
+message GetPaperByIdResp{
+    PaperProto paper                            = 1;//试卷
+}
+
+//获取试卷总数的响应
+//commandId = 0x0025
+message CountPaperResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询试卷的响应
+//commandId = 0x0026
+message PagePaperResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated PaperProto papers                  = 5;//题目列表
+}
+
+//根据条件分页查询试卷的响应
+//commandId = 0x0027
+message PagePaperByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated PaperProto papers                  = 5;//试卷列表
+}
+
+//批量删除试卷的响应
+//commandId = 0x0028
+message BatchDeletePaperResp{
+    string detail                               = 1;//详情
+}
+
+// 试卷
+message PaperProto
+{
+    string id                                   = 1;//试卷id
+    string name                                 = 2;//试卷名称
+    string categoryId                           = 3;//试卷种类id
+    int32 status                                = 4;//试卷状态：0 禁用 1 启用
+    int32 totalScore                            = 5;//总分
+    int32 passScore                             = 6;//及格分数
+    string data                                 = 7;//试卷数据
+    string poster                               = 8;//创建人
+    int64 createDate                            = 9;//创建日期
+    string modifier                             = 10;//修改人
+    int64 modifyDate                            = 11;//修改日期
+    string remark                               = 12;//试卷说明
+}

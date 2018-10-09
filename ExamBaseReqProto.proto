@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam_base";
+option java_outer_classname = "ExamBaseReqProto";
+
+//考试系统基本信息的请求
+//commandId = 0x00B1
+message GetExamBaseInfoReq{
+    
+}

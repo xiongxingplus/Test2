@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam";
+option java_outer_classname = "ExamCategoryRespProto";
+
+//增加考试分类的响应
+//commandId = 0x0051
+message InsertExamCategoryResp{
+    bool success                                = 1;//是否成功
+    string detail                               = 2;//详情
+}
+
+//根据考试分类id删除考试分类的响应
+//commandId = 0x0052
+message DeleteExamCategoryResp{
+
+}
+
+//修改考试分类的响应
+//commandId = 0x0053
+message UpdateExamCategoryResp{
+
+}
+
+//根据考试分类id查询考试分类的响应
+//commandId = 0x0054
+message GetExamCategoryByIdResp{
+    ExamCategoryProto examCategory              = 1;//考试分类
+}
+
+//获取考试分类总数的响应
+//commandId = 0x0055
+message CountExamCategoryResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询考试分类的响应
+//commandId = 0x0056
+message PageExamCategoryResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated ExamCategoryProto examCategorys    = 5;//题目列表
+}
+
+//获取所有考试分类的响应
+//commandId = 0x0057
+message GetAllExamCategorysResp{
+    repeated ExamCategoryProto examCategorys    = 1;//考试分类列表
+}
+
+//根据条件分页查询考试分类的响应
+//commandId = 0x0058
+message PageExamCategoryByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated ExamCategoryProto examCategorys    = 5;//考试分类列表
+}
+
+//考试分类
+message ExamCategoryProto{
+    string id                                   = 1;//考试分类id
+    string name                                 = 2;//考试分类名称
+    int32 status                                = 3;//考试分类状态 0:禁用 1:启用
+    string poster                               = 4;//创建人
+    int64 createDate                            = 5;//创建日期
+    string modifier                             = 6;//修改人
+    int64 modifyDate                            = 7;//修改日期
+    string remark                               = 8;//考试分类说明
+    int32 amount                                = 9;//考试数量
+}

@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.user";
+option java_outer_classname = "UserRespProto";
+
+//增加用户的响应
+//commandId = 0x0091
+message InsertUserResp{
+    bool success                                = 1;//是否成功
+    string detail                               = 2;//详情
+}
+
+//根据用户id删除用户的响应
+//commandId = 0x0092
+message DeleteUserResp{
+
+}
+
+//修改用户的响应
+//commandId = 0x0093
+message UpdateUserResp{
+
+}
+
+//根据用户id查询用户的响应
+//commandId = 0x0094
+message GetUserByIdResp{
+    UserProto user                              = 1;//用户
+}
+
+//获取用户总数的响应
+//commandId = 0x0095
+message CountUserResp{
+    int32 count                                 = 1;//用户总数
+}
+
+//分页查询用户的响应
+//commandId = 0x0096
+message PageUserResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated UserProto users                    = 5;//用户列表
+}
+
+//根据条件分页查询用户的响应
+//commandId = 0x0097
+message PageUserByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated UserProto users                    = 5;//用户列表
+}
+
+//批量删除用户的响应
+//commandId = 0x0098
+message BatchDeleteUserResp{
+    string detail                               = 1;//详情
+}
+
+//批量添加用户的响应
+//commandId = 0x0099
+message BatchInsertUserResp{
+    string detail                               = 1;//详情
+}
+
+//用户登陆的响应
+//commandId = 0x009A
+message UserLoginResp{
+    bool success                                = 1;//是否登陆成功
+    string detail                               = 2;//详情
+}
+
+//根据用户名查询用户的响应
+//commandId = 0x009B
+message GetUserByNameResp{
+    UserProto user                              = 1;//用户
+}
+
+//根据系统用户状态的请求
+//commandId = 0x009C
+message GetSysUserStatusResp{
+	int32 loginNumber                           =1;//已登陆数量
+	int32 queuedNumber                          =2;//排队数量
+}
+
+//用户注销的响应
+//commandId = 0x009D
+message UserExitResp{
+    bool success                                = 1;//是否注销成功
+    string detail                               = 2;//详情
+}
+
+// 用户信息
+message UserProto
+{
+    string userId                               = 1;//用户id
+    string userName                             = 2;//用户名称
+    string userPassword                         = 3;//用户密码
+    int32 sex                                   = 4;//性别
+    string branchId                             = 5;//专业Id
+    string grade                                = 6;//年级
+    string positionId                           = 7;//班级Id
+    string roleId                               = 8;//角色Id
+    string realName                             = 9;//真实姓名
+    int32 userStatus                            = 10;//用户状态
+    string poster                               = 11;//创建人
+    int64 createDate                            = 12;//创建日期
+    string modifier                             = 13;//修改人
+    int64 modifyDate                            = 14;//修改日期
+    string remark                               = 15;//用户数据
+}

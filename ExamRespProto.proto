@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.exam";
+option java_outer_classname = "ExamRespProto";
+
+//增加考试的响应
+//commandId = 0x0041
+message InsertExamResp{
+    bool success                                = 1;//是否成功
+    string detail                               = 2;//详情
+}
+
+//根据考试id删除考试的响应
+//commandId = 0x0042
+message DeleteExamResp{
+
+}
+
+//修改考试的响应
+//commandId = 0x0043
+message UpdateExamResp{
+
+}
+
+//根据考试id查询考试的响应
+//commandId = 0x0044
+message GetExamByIdResp{
+    ExamProto exam                              = 1;//考试
+}
+
+//获取考试总数的响应
+//commandId = 0x0045
+message CountExamResp{
+    int32 count                                 = 1;//题目总数
+}
+
+//分页查询考试的响应
+//commandId = 0x0046
+message PageExamResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated ExamProto exams                    = 5;//题目列表
+}
+
+//根据条件分页查询考试的响应
+//commandId = 0x0047
+message PageExamByConditionResp{
+    int32 currentPage                           = 1;//当前页码
+    int32 pageSize                              = 2;//每页数量
+    int32 totalRecords                          = 3;//总记录
+    int32 totalPages                            = 4;//总页数
+    repeated ExamProto exams                    = 5;//考试列表
+}
+
+//批量删除考试的响应
+//commandId = 0x0048
+message BatchDeleteExamResp{
+    string detail                               = 1;//详情
+}
+
+//获取考试试卷的响应
+//commandId = 0x0049
+message GetExamPaperResp{
+    ExamPaperProto examPaper                    =1;//考试试卷Id
+}
+
+//最近考试的响应
+//commandId = 0x004A
+message GetLatelyExamResp{
+    repeated LatelyExamProto exams              = 1;//考试列表
+}
+
+// 最近考试
+message LatelyExamProto{
+    string id                                   = 1;//考试id
+    string name                                 = 2;//考试名称
+    string paperId                              = 3;//试卷id
+    string categoryId                           = 4;//考试分类id
+    int32 status                                = 5;//考试状态
+    int32 duration                              = 6;//考试时长
+    int64 startTime                             = 7;//开考时间
+    int64 endTime                               = 8;//结束时间
+    int32 totalScore                            = 9;//总分
+    int32 passScore                             = 10;//及格分数
+}
+
+// 考试
+message ExamProto
+{
+    string id                                   = 1;//考试id
+    string name                                 = 2;//考试名称
+    string paperId                              = 3;//试卷id
+    string categoryId                           = 4;//考试分类id
+    int32 status                                = 5;//考试状态
+    int32 duration                              = 6;//考试时长
+    int64 startTime                             = 7;//开考时间
+    int64 endTime                               = 8;//结束时间
+    int64 showTime                              = 9;//成绩公布时间
+    string poster                               = 10;//创建人
+    int64 createDate                            = 11;//创建日期
+    string modifier                             = 12;//修改人
+    int64 modifyDate                            = 13;//修改日期
+    int32 questionOrder                         = 14;//试题排列顺序
+    int32 showKey                               = 15;//是否公布答案
+    int32 showMode                              = 16;//显示形式
+    string remark                               = 17;//考试说明
+}
+
+//考试试卷
+message ExamPaperProto
+{
+    string id                                   = 1;//试卷id
+    string name                                 = 2;//试卷名称
+    string categoryId                           = 3;//试卷种类id
+    int32 status                                = 4;//试卷状态：0 禁用 1 启用
+    int32 totalScore                            = 5;//总分
+    int32 passScore                             = 6;//及格分数
+    string remark                               = 7;//试卷说明
+    repeated ExamPaperSectionProto sections     = 8;//章节列表
+}
+
+//考试试卷章节
+message ExamPaperSectionProto
+{
+    string id                                   = 1;//试卷节id
+    string name                                 = 2;//试卷节名称 
+    string remark                               = 3;//试卷节说明
+    int32 qType                                 = 4;//题型
+    int32 number                                = 5;//数量
+    int32 score                                 = 6;//分数
+    repeated ExamQuestionProto questions        = 7;//试题列表
+}
+
+//考试题目
+message ExamQuestionProto
+{
+    string id                                   = 1;//试题id
+    string bankId                               = 2;//题库id
+    int32 type                                  = 3;//试题类型
+    int32 level                                 = 4;//试题难度
+    string from                                 = 5;//试题来源
+    int32 status                                = 6;//试题状态
+    string content                              = 7;//试题内容
+    string key                                  = 8;//试题答案
+    string resolve                              = 9;//试题解析
+    string data                                 = 10;//题目数据
+}

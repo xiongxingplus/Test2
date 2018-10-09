@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option csharp_namespace = "XFramework.Proto";
+option java_package = "cn.com.xz.proto.level";
+option java_outer_classname = "LevelInfoReqProto";
+
+//增加用户关卡信息的请求
+//commandId = 0x00C1
+message InsertLevelInfoReq{
+    string userId                               = 1;//用户id
+    int32 level                                 = 2;//当前关卡
+    string data                                 = 3;//关卡数据
+    string remark                               = 4;//关卡备注
+}
+
+//根据关卡id删除关卡的请求
+//commandId = 0x00C2
+message DeleteLevelInfoReq{
+    string id                                   = 1;//关卡id
+}
+
+//修改关卡的请求
+//commandId = 0x00C3
+message UpdateLevelInfoReq{
+    string id                                   = 1;//关卡id
+    string userId                               = 2;//用户id
+    int32 level                                 = 3;//当前关卡
+    string data                                 = 4;//关卡数据
+    string remark                               = 5;//关卡备注
+}
+
+//根据关卡id查询关卡的请求
+//commandId = 0x00C4
+message GetLevelInfoByIdReq{
+    string id                                   = 1;//关卡id
+}
+
+//根据用户id查询关卡的请求
+//commandId = 0x00C5
+message GetLevelInfoByUIDReq{
+    string userId                               = 1;//用户id
+}
+
+//根据用户id判断是否存在关卡信息的请求
+//commandId = 0x00C6
+message IsExistsLevelInfoReq{
+    string userId                               = 1;//用户id
+}
